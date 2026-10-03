@@ -1,9 +1,8 @@
-function Sidebar() {
-  // This is a JavaScript array holding our menu names
-  const menuItems = [
-    'Dashboard', 'Subjects', 'Timetable', 'Assignments', 
-    'Attendance', 'Exams', 'Resources', 'GPA Calculator'
-  ];
+import React from 'react';
+
+// We added props (currentView, setCurrentView) to talk to App.jsx
+function Sidebar({ currentView, setCurrentView }) {
+  const menuItems = ['Dashboard', 'Subjects', 'Timetable', 'Assignments', 'Attendance', 'Exams', 'Resources', 'GPA Calculator'];
 
   return (
     <div className="w-64 bg-white border-r h-screen flex flex-col shadow-sm">
@@ -12,11 +11,15 @@ function Sidebar() {
       </div>
       
       <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-        {/* We use .map() to loop through our array and create a button for each item */}
         {menuItems.map((item) => (
           <button 
             key={item}
-            className="w-full text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
+            onClick={() => setCurrentView(item)}
+            className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+              currentView === item 
+                ? 'bg-blue-50 text-blue-600' 
+                : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+            }`}
           >
             {item}
           </button>
