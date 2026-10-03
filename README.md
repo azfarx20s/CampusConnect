@@ -1,16 +1,39 @@
-# React + Vite
+# CampusConnect - Student Academic Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A centralized academic management web application designed to consolidate a student's university workflow. 
 
-Currently, two official plugins are available:
+## Internee Details
+* **Name:** Muhammad Azfar Qadri
+* **Internship ID:** ZYNVEX-CERT-1911
+* **Program:** Web Development / Frontend Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Status
 
-## React Compiler
+### ✅ Module 1: Environment Setup & Core UI Shell
+* Initialized Vite + React project.
+* Configured Tailwind CSS.
+* Built responsive Sidebar navigation.
+* Created static Dashboard layout with summary cards.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✅ Module 2: Subjects & Timetable Views
+* Created mock JSON data structure (`mockData.js`).
+* Implemented React State for dynamic view switching.
+* Built dynamic Subjects grid using `.map()`.
+* Built weekly Timetable data table.
 
-## Expanding the ESLint configuration
+### ⏳ Module 3: Task & Exam Management (Upcoming)
+* Assignments tracker.
+* Upcoming Exams schedule interface.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### ⏳ Module 4: Analytics (Upcoming)
+* GPA Calculator logic.
+* Interactive attendance trackers.
+
+### ⏳ Module 5: Dashboard Integration (Upcoming)
+* LocalStorage integration.
+* Final UI polish and deployment.
+
+## How to Run Locally
+1. Clone the repository.
+2. Run `npm install` to install dependencies.
+3. Run `npm run dev` to start the local development server.
