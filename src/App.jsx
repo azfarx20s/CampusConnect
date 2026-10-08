@@ -2,19 +2,20 @@ import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Subjects from './pages/Subjects';
-import Timetable from './pages/Timetable'; // Added import
+import Timetable from './pages/Timetable';
+import Assignments from './pages/Assignments';
+import Exams from './pages/Exams'; // Added import
 
 function App() {
   const [currentView, setCurrentView] = useState('Dashboard');
 
   const renderView = () => {
     switch(currentView) {
-      case 'Dashboard': 
-        return <Dashboard />;
-      case 'Subjects': 
-        return <Subjects />;
-      case 'Timetable': // Added route
-        return <Timetable />;
+      case 'Dashboard': return <Dashboard />;
+      case 'Subjects': return <Subjects />;
+      case 'Timetable': return <Timetable />;
+      case 'Assignments': return <Assignments />;
+      case 'Exams': return <Exams />; // Added route
       default: 
         return (
           <div className="flex h-full items-center justify-center text-gray-400">

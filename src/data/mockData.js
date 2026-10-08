@@ -12,3 +12,12 @@ export const timetableData = [
   { id: 4, day: 'Wednesday', time: '11:00 AM', subject: 'Web Engineering', room: 'Lab 3' },
   { id: 5, day: 'Thursday', time: '09:00 AM', subject: 'Computer Networks', room: 'Room 12' }
 ];
+export const initialAssignments = [
+  { id: 1, subject: 'Web Engineering', title: 'React UI Layout', dueDate: 'Oct 10, 2026', status: 'Pending' },
+  { id: 2, subject: 'Database Systems', title: 'ER Diagram', dueDate: 'Oct 12, 2026', status: 'Pending' }
+];
+
+export const examsData = [
+  { id: 1, subject: 'Mobile Application Development', date: 'Oct 15, 2026', time: '10:00 AM', room: 'Lab 2' },
+  { id: 2, subject: 'Database Systems', date: 'Oct 18, 2026', time: '09:00 AM', room: 'Room 15' }
+];

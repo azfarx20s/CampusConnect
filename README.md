@@ -21,9 +21,9 @@ A centralized academic management web application designed to consolidate a stud
 * Built dynamic Subjects grid using `.map()`.
 * Built weekly Timetable data table.
 
-### ⏳ Module 3: Task & Exam Management (Upcoming)
-* Assignments tracker.
-* Upcoming Exams schedule interface.
+### ✅ Module 3: Task & Exam Management
+* Built interactive Assignments tracker with React State for adding/deleting tasks.
+* Built Upcoming Exams schedule interface with dynamic calendar-block styling.
 
 ### ⏳ Module 4: Analytics (Upcoming)
 * GPA Calculator logic.
