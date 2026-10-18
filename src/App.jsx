@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/sidebar.jsx';
 import Dashboard from './pages/Dashboard';
 import Subjects from './pages/Subjects';
 import Timetable from './pages/Timetable';
