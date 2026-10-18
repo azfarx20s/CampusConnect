@@ -3,28 +3,26 @@ import { subjectsData } from '../data/mockData';
 
 function Subjects() {
   return (
-    <div className="max-w-6xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">My Subjects</h1>
-        <p className="text-gray-500 mt-1">Manage your current semester courses.</p>
+    <div className="max-w-6xl mx-auto space-y-8">
+      <header>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Enrolled Subjects</h1>
+        <p className="text-gray-500 dark:text-gray-400 mt-1">Course details and instructor information.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {subjectsData.map((subject) => (
-          <div key={subject.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-xl font-bold text-gray-800 leading-tight pr-4">{subject.name}</h2>
-              <span className="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">
+          <div key={subject.id} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
+            <div>
+              <span className="text-xs font-semibold bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 px-2.5 py-1 rounded-full">
                 {subject.code}
               </span>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white mt-3 mb-1">{subject.title}</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Instructor: {subject.instructor}</p>
             </div>
-            <div className="space-y-2 text-sm text-gray-600">
-              <p><span className="font-medium text-gray-700">Teacher:</span> {subject.teacher}</p>
-              <p><span className="font-medium text-gray-700">Credit Hours:</span> {subject.credits}</p>
+            <div className="pt-4 border-t border-gray-50 dark:border-gray-700 flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
+              <span>Credit Hours: {subject.credits}</span>
+              <span>Room: {subject.room}</span>
             </div>
-            <button className="mt-6 w-full bg-gray-50 hover:bg-blue-50 text-blue-600 font-medium py-2 rounded-lg transition-colors border border-gray-200 hover:border-blue-200">
-              View Resources
-            </button>
           </div>
         ))}
       </div>

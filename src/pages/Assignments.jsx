@@ -1,94 +1,85 @@
 import React, { useState } from 'react';
-import { initialAssignments } from '../data/mockData';
 
 function Assignments({ assignments, setAssignments }) {
-  
-  // State to handle the new assignment form inputs
-  const [newTask, setNewTask] = useState({ subject: '', title: '', dueDate: '' });
+  const [newTitle, setNewTitle] = useState('');
+  const [newSubject, setNewSubject] = useState('Mobile Application Development');
+  const [newDueDate, setNewDueDate] = useState('');
 
-  // Function to add a new assignment
-  const handleAddTask = (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
-    if (!newTask.subject || !newTask.title || !newTask.dueDate) return;
+  const handleAddAssignment = (e) => {
+    e.preventDefault();
+    if (!newTitle || !newDueDate) return;
 
-    const newAssignment = {
-      id: Date.now(), // Creates a unique ID
-      ...newTask,
+    const newTask = {
+      id: Date.now(),
+      title: newTitle,
+      subject: newSubject,
+      dueDate: newDueDate,
       status: 'Pending'
     };
 
-    setAssignments([...assignments, newAssignment]);
-    setNewTask({ subject: '', title: '', dueDate: '' }); // Clear the form
+    setAssignments([...assignments, newTask]);
+    setNewTitle('');
+    setNewDueDate('');
   };
 
-  // Function to delete an assignment
   const handleDelete = (id) => {
     setAssignments(assignments.filter(task => task.id !== id));
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Assignments</h1>
-        <p className="text-gray-500 mt-1">Manage your pending coursework.</p>
+    <div className="max-w-6xl mx-auto space-y-8">
+      <header>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Assignments</h1>
+        <p className="text-gray-500 dark:text-gray-400 mt-1">Track deadlines and complete coursework.</p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Form Section */}
-        <div className="lg:col-span-1">
-          <form onSubmit={handleAddTask} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">Add New Assignment</h3>
-            <div className="space-y-4">
-              <input 
-                type="text" 
-                placeholder="Subject (e.g. Web Engineering)" 
-                value={newTask.subject}
-                onChange={(e) => setNewTask({...newTask, subject: e.target.value})}
-                className="w-full p-2 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500"
-              />
-              <input 
-                type="text" 
-                placeholder="Assignment Title" 
-                value={newTask.title}
-                onChange={(e) => setNewTask({...newTask, title: e.target.value})}
-                className="w-full p-2 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500"
-              />
-              <input 
-                type="date" 
-                value={newTask.dueDate}
-                onChange={(e) => setNewTask({...newTask, dueDate: e.target.value})}
-                className="w-full p-2 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 text-gray-600"
-              />
-              <button type="submit" className="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Add Assignment
-              </button>
-            </div>
-          </form>
-        </div>
+      {/* Add Assignment Form */}
+      <form onSubmit={handleAddAssignment} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input 
+          type="text" 
+          placeholder="Assignment Title" 
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+          className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg focus:outline-none focus:border-blue-500"
+        />
+        <select 
+          value={newSubject}
+          onChange={(e) => setNewSubject(e.target.value)}
+          className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg focus:outline-none focus:border-blue-500"
+        >
+          <option>Mobile Application Development</option>
+          <option>Software Engineering</option>
+          <option>Web Engineering</option>
+          <option>Database Systems</option>
+        </select>
+        <input 
+          type="text" 
+          placeholder="Due Date (e.g. Oct 20)" 
+          value={newDueDate}
+          onChange={(e) => setNewDueDate(e.target.value)}
+          className="p-2 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg focus:outline-none focus:border-blue-500"
+        />
+        <button type="submit" className="bg-blue-600 text-white font-medium p-2 rounded-lg hover:bg-blue-700 transition-colors">
+          Add Task
+        </button>
+      </form>
 
-        {/* List Section */}
-        <div className="lg:col-span-2 space-y-4">
-          {assignments.length === 0 ? (
-            <div className="bg-white p-8 text-center rounded-xl border border-gray-100 text-gray-500">
-              No pending assignments. You're all caught up!
+      {/* Assignments List */}
+      <div className="space-y-4">
+        {assignments.map((task) => (
+          <div key={task.id} className="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex justify-between items-center">
+            <div>
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white">{task.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{task.subject} • <span className="text-orange-500 font-medium">Due {task.dueDate}</span></p>
             </div>
-          ) : (
-            assignments.map((task) => (
-              <div key={task.id} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center hover:shadow-md transition-shadow">
-                <div>
-                  <h4 className="text-lg font-bold text-gray-800">{task.title}</h4>
-                  <p className="text-sm text-gray-500">{task.subject} • Due: {task.dueDate}</p>
-                </div>
-                <button 
-                  onClick={() => handleDelete(task.id)}
-                  className="text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors text-sm font-medium"
-                >
-                  Mark Complete
-                </button>
-              </div>
-            ))
-          )}
-        </div>
+            <button 
+              onClick={() => handleDelete(task.id)}
+              className="px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-semibold rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors text-sm"
+            >
+              ✓ Mark Complete
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
