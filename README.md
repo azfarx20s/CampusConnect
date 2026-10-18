@@ -4,7 +4,6 @@ A centralized academic management web application designed to consolidate a stud
 
 ## Internee Details
 * **Name:** Muhammad Azfar Qadri
-* **Internship ID:** ZYNVEX-CERT-1911
 * **Program:** Web Development / Frontend Development
 
 ## Project Status
@@ -25,13 +24,14 @@ A centralized academic management web application designed to consolidate a stud
 * Built interactive Assignments tracker with React State for adding/deleting tasks.
 * Built Upcoming Exams schedule interface with dynamic calendar-block styling.
 
-### ⏳ Module 4: Analytics (Upcoming)
-* GPA Calculator logic.
-* Interactive attendance trackers.
+### ✅ Module 4: Analytics
+* Built dynamic GPA Calculator with real-time grade-point math logic.
+* Implemented interactive attendance trackers with calculated progress bars.
 
-### ⏳ Module 5: Dashboard Integration (Upcoming)
-* LocalStorage integration.
-* Final UI polish and deployment.
+### ✅ Module 5: Dashboard Integration & LocalStorage
+* Connected master state across Dashboard, Assignments, and Analytics.
+* Integrated LocalStorage persistence for user assignments data.
+* Polished UI components and verified full responsive design.
 
 ## How to Run Locally
 1. Clone the repository.

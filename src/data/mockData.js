@@ -21,3 +21,10 @@ export const examsData = [
   { id: 1, subject: 'Mobile Application Development', date: 'Oct 15, 2026', time: '10:00 AM', room: 'Lab 2' },
   { id: 2, subject: 'Database Systems', date: 'Oct 18, 2026', time: '09:00 AM', room: 'Room 15' }
 ];
+export const attendanceData = [
+  { id: 1, subject: 'Mobile Application Development', attended: 24, total: 28 },
+  { id: 2, subject: 'Software Engineering', attended: 26, total: 30 },
+  { id: 3, subject: 'Web Engineering', attended: 22, total: 25 },
+  { id: 4, subject: 'Database Systems', attended: 28, total: 32 },
+  { id: 5, subject: 'Computer Networks', attended: 20, total: 28 }
+];

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { initialAssignments } from '../data/mockData';
 
-function Assignments() {
-  // State to hold our list of assignments
-  const [assignments, setAssignments] = useState(initialAssignments);
+function Assignments({ assignments, setAssignments }) {
   
   // State to handle the new assignment form inputs
   const [newTask, setNewTask] = useState({ subject: '', title: '', dueDate: '' });
