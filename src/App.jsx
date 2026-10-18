@@ -8,7 +8,6 @@ import Exams from './pages/Exams';
 import Attendance from './pages/Attendance';
 import GPACalculator from './pages/GPACalculator';
 
-// Mock Data Imports
 import { 
   initialAssignments, 
   attendanceData, 
@@ -19,13 +18,26 @@ import {
 function App() {
   const [currentView, setCurrentView] = useState('Dashboard');
 
-  // Initialize state from LocalStorage, falling back to initialAssignments
+  // Theme State
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('campusconnect_theme') === 'dark';
+  });
+
+  // Synchronize with root <html> element and LocalStorage
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('campusconnect_theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
   const [assignments, setAssignments] = useState(() => {
     const savedTasks = localStorage.getItem('campusconnect_assignments');
     return savedTasks ? JSON.parse(savedTasks) : initialAssignments;
   });
 
-  // Automatically sync to LocalStorage whenever assignments change
   useEffect(() => {
     localStorage.setItem('campusconnect_assignments', JSON.stringify(assignments));
   }, [assignments]);
@@ -59,8 +71,13 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 font-sans">
-      <Sidebar currentView={currentView} setCurrentView={setCurrentView} />
+    <div className="flex h-screen font-sans bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-200">
+      <Sidebar 
+        currentView={currentView} 
+        setCurrentView={setCurrentView} 
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
       <main className="flex-1 p-8 overflow-y-auto">
         {renderView()}
       </main>
