@@ -7,6 +7,7 @@ import Assignments from './pages/Assignments';
 import Exams from './pages/Exams';
 import Attendance from './pages/Attendance';
 import GPACalculator from './pages/GPACalculator';
+import Resources from './pages/Resources'; // Added import
 
 import { 
   initialAssignments, 
@@ -18,17 +19,17 @@ import {
 function App() {
   const [currentView, setCurrentView] = useState('Dashboard');
 
-  // Theme State
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('campusconnect_theme') === 'dark';
   });
 
-  // Synchronize with root <html> element and LocalStorage
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
     }
     localStorage.setItem('campusconnect_theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
@@ -61,6 +62,7 @@ function App() {
       case 'Exams': return <Exams />;
       case 'Attendance': return <Attendance />;
       case 'GPA Calculator': return <GPACalculator />;
+      case 'Resources': return <Resources />; // Added route
       default: 
         return (
           <div className="flex h-full items-center justify-center text-gray-400">
